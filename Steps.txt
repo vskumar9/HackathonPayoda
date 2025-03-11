@@ -1,0 +1,38 @@
+python -m venv venv
+
+venv\Scripts\activate
+
+pip install django
+django-admin startproject myproject
+cd myproject
+python manage.py startapp myapp
+python manage.py runserver
+
+
+python manage.py migrate
+python manage.py createsuperuser
+
+
+pip install django djangorestframework django-channels speechrecognition vosk websockets
+
+pip install vosk
+pip install pocketsphinx
+pip install daphne
+pip install mysqlclient
+
+daphne -b 0.0.0.0 -p 8000 Project.asgi:application
+
+
+
+Test WebSockets with JavaScript Console
+Open Chrome (or any browser).
+Open Developer Tools (press F12 or Ctrl + Shift + I).
+Go to Console and enter:
+let socket = new WebSocket("ws://127.0.0.1:8000/ws/some_path/");
+socket.onmessage = (event) => console.log(event.data);
+
+
+
+👉 http://127.0.0.1:8000/
+or
+👉 http://localhost:8000/
